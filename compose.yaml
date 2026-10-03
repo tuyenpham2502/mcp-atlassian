@@ -1,0 +1,19 @@
+services:
+  mcp-atlassian:
+    build: .
+    image: mcp-atlassian:local
+    container_name: mcp-atlassian
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:13000:9000"
+    command:
+      - "--transport"
+      - "streamable-http"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "9000"
+      - "--path"
+      - "/mcp"
